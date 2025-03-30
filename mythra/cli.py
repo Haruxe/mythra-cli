@@ -41,17 +41,18 @@ def run():
         res = requests.post("http://localhost:8000/analyze", json={"contracts": sources})
         res.raise_for_status()
         report = res.json()
-        for result in report.get("results", []):
-            severity_colors = {
-                "critical": "bold red",
-                "high": "red",
-                "medium": "yellow",
-                "low": "cyan",
-                "gas": "blue",
-                "unspecified": "magenta",
-                "error": "bold white on red"
-            }
 
+        severity_colors = {
+            "critical": "bold red",
+            "high": "red",
+            "medium": "yellow",
+            "low": "cyan",
+            "gas": "blue",
+            "unspecified": "magenta",
+            "error": "bold white on red"
+        }
+
+        for result in report.get("results", []):
             print()  # space between files
             console.rule(f"[bold]📄 {result['file']}[/bold]")
 
@@ -64,8 +65,15 @@ def run():
                     color = severity_colors.get(sev, "white")
                     title = v.get("title", "Unknown issue")
                     line = v.get("line", "N/A")
+                    fix = v.get("fix", None)
+
+                    # Print main vulnerability line
                     msg = Text(f" - [{sev.upper()}] {title} (line {line})", style=color)
                     console.print(msg)
+
+                    # Optional fix suggestion
+                    if fix:
+                        console.print(Text(f"   💡 Fix: {fix}", style="dim"))
 
         print("\n✅ Done.")
     except Exception as e:
