@@ -1,0 +1,45 @@
+# Python bytecode
+__pycache__/
+*.py[cod]
+*$py.class
+
+# Virtual environments
+.venv/
+env/
+venv/
+
+# Environment variables
+.env
+.env.*
+
+# Chroma vector DB (persistent storage)
+.chroma/
+
+# FastAPI auto-reload cache
+*.reload
+
+# Logs
+*.log
+
+# Jupyter/IPython
+.ipynb_checkpoints/
+
+# Distribution / packaging
+build/
+dist/
+*.egg-info/
+
+# VS Code / PyCharm / JetBrains
+.vscode/
+.idea/
+
+# OS-specific files
+.DS_Store
+Thumbs.db
+
+# Misc
+*.bak
+*.swp
+*~
+
+./contracts/** 
