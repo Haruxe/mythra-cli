@@ -1,4 +1,12 @@
-typer
+# --- LLM Integration ---
+openai>=1.10 # Ensure version supports response_format
+google-generativeai>=0.4 # Or latest
+anthropic>=0.20 # Or latest
+
+# --- Data Fetching & Parsing ---
+tenacity
+
+# --- Utilities ---
+python-dotenv
 rich
-fastapi
-uvicorn
+typer
